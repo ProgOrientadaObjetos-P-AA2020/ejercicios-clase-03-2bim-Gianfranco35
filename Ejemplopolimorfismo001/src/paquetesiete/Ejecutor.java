@@ -6,6 +6,7 @@
 package paquetesiete;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -13,26 +14,39 @@ import java.util.ArrayList;
  */
 public class Ejecutor {
     public static void main(String[] args) {
-        /*
-        clase uno abstracta llamada Figura; con atributos:
-        características y área; la clase debe tener un método
-        abstracto calcular_area.
-        - clase llamada Triángulo (hereda de Figura); con
-        atributos: base y altura.
-        - clase llamada Rombo (hereda de Figura) con atributo: diagonal_menor y 
-        diagonal mayor.
-        - clase llamada Cuadrado (hereda Figura) con: atributos: lado.
-        - clase Ejecutor, que permite generar:
-            4 objetos de tipo Cuadrado
-            3 objetos de tipo Rombo
-            5 objeto de Triángulo 
-            Comprobar el concepto del polimorfismo.
-        */
-        
+        Scanner entrada = new Scanner(System.in);
+        double diaMay,diaMen,bas,alt,lad;
         // inicio de la solución
         ArrayList<Figura> figuras = new ArrayList<>();
         
-        
+        System.out.println("Datos para Cuadrado");
+        for(int i =0;i < 4;i++){
+        System.out.println("Ingrese el tamaño del lado: "+ (i+1));
+        lad = entrada.nextInt();
+        Cuadrado cuadrado = new Cuadrado(lad);
+        cuadrado.calcular_area();
+        figuras.add(cuadrado);
+        }
+        System.out.println("Datos para Rombo");
+        for(int i=0;i<3;i++){
+        System.out.println("Ingrese tamaño del Diagonal Mayor: "+ (i+1));
+        diaMay = entrada.nextDouble();
+        System.out.println("Ingrese tamaño de la Diagonal Menor: "+ (i+1));
+        diaMen = entrada.nextDouble();
+        Rombo romb = new Rombo(diaMay,diaMen);
+        romb.calcular_area();
+        figuras.add(romb);
+        }
+        System.out.println("Datos para Triangulo");
+        for(int i=0;i<3;i++){
+        System.out.println("Ingrese el tamaño de la Base: "+ (i+1));
+        bas = entrada.nextDouble();
+        System.out.println("Ingrese el tamaño de la Altura: "+ (i+1));
+        alt = entrada.nextDouble();
+        Triangulo trian = new Triangulo(bas,alt);
+        trian.calcular_area();
+        figuras.add(trian);
+        }
         
         // proceso para comprobar el polimorfismo
         for (int i = 0; i < figuras.size(); i++) {
